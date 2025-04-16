@@ -21,7 +21,7 @@ const Tab = ({sidebarOpen}) => {
             {tabs.map(tabs => (
  <button 
  key={tabs.path}
- className={`button ${tabs.path === CurrentTab ? 'btn-primary' : ''}`} 
+ className={`button ${tabs.path === CurrentTab ? 'btn btn-primary' : ''}`} 
  onClick={() => tabHandling(tabs.path)}
 >{tabs?.pathName}<span onClick={(e)=>deleteTab(e,tabs.path)}> x</span></button>
             ))}
@@ -30,4 +30,4 @@ const Tab = ({sidebarOpen}) => {
   )
 }
 
-export default Tab
+export default Tab;
