@@ -1,0 +1,28 @@
+.sidebar-main{
+    height: 100%;
+    width: 200px;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1f1d1d;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+button{
+    display: block;
+}
+li{
+    margin-top: 30px;
+}
+.sidebar-main .nav-item {
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: background 0.3s;
+  }
+  
+  .sidebar-main .nav-item:hover {
+    background-color: #343a40;
+  }
+  

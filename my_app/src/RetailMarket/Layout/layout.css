@@ -1,0 +1,9 @@
+.sidebarOpen{
+    position: fixed;
+    top: 9px;
+    left: 4px;
+    z-index: 1000;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
