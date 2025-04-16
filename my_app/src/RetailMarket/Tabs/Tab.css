@@ -18,4 +18,7 @@
     padding: 11px 27px;
     font-size: 20px;
   }
+  .activeButton{
+    background-color: rgb(241, 195, 214);
+  }
   

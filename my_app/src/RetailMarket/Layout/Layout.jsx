@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { addTab } from '../Redux/tabSlice';
 import { getPath } from './getPath';
 const Layout = () => {
-  const [sidebar, setSidbar] = useState(false);
+  const [sidebar, setSidbar] = useState(true);
   const dispatch = useDispatch();
   const {id} = useParams();
   useEffect(()=>{
