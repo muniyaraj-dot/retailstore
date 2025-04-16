@@ -11,7 +11,7 @@ const tabSlice = createSlice({
     reducers:{
             addTab: (state, action) => {
                 const path = action.payload.path;
-                if (!state.tabs.some(val => val.pathName === path.pathName)) {
+                if (!state.tabs.some(val => val.path === path.path)) {
                     state.tabs.push(path);
                 }
                 state.currentTab = path.path;

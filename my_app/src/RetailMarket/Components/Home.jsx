@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom'
 const Home = () => {
     const navigate = useNavigate();
     const [typeofpayment,setPayment] = useState("Credit");
+    const time = new Date().getTime();
+    const billhandleing = () =>{
+         navigate(`/bill/${time}`);
+    }
   return (
     <div>
     <div className='flex-grow-1 p-2'>
@@ -15,7 +19,7 @@ const Home = () => {
              <option value="Credit">Credit</option>
       </select>
             </div>
-        <button className='btn btn-primary addbillbutton' >+ Add bill</button>
+        <button className='btn btn-primary addbillbutton' onClick={billhandleing}>+ Add bill</button>
     </div>
     </div>
   )

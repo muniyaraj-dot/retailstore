@@ -9,7 +9,7 @@ export const getPath = (id) => {
             return "Dashboard";
         }else if(path === "/settings"){
             return "Settings";
-        }else if(path === `/bill/${path}`){
+        }else if(path === `/bill/${id}`){
             return "Bill"
         }
 } 
