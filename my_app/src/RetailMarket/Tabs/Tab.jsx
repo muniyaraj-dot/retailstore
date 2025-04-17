@@ -8,6 +8,7 @@ const Tab = ({sidebarOpen}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const tabHandling = (path) =>{
+      if(window.location.pathname === path) return;
       dispatch(setCurrentTab({path}));
       navigate(path);
     }
@@ -15,7 +16,6 @@ const Tab = ({sidebarOpen}) => {
       e.stopPropagation();
       dispatch(removeTab({ path, navigate }));
   }
-  console.log(currentTab);
   return (
     <div>
         <div className='button-container' style={{marginLeft: sidebarOpen ? "0px" : "60px"}}>

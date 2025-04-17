@@ -19,7 +19,9 @@ const Home = () => {
              <option value="Credit">Credit</option>
       </select>
             </div>
-        <button className='btn btn-primary addbillbutton' onClick={billhandleing}>+ Add bill</button>
+            <div class="d-flex justify-content-center">
+        <button className='btn btn-primary addbillbutton rounded-pill px-4' onClick={billhandleing}>+ Add bill</button>
+    </div>
     </div>
     </div>
   )

@@ -12,8 +12,6 @@
   }
   
 .addbillbutton{
-    position: relative;
-    left: 50%;
-    bottom: 0;
-    min-height: 100%;
+    position: absolute;
+    bottom: 15px;
 }

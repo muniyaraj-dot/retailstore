@@ -1,6 +1,5 @@
 export const getPath = (id) => {
         const path = window.location.pathname;
-        console.log(path);
         if(path === "/"){
             return "Home";
         }else if(path === "/stacks"){

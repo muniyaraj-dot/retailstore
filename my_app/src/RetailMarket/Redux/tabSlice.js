@@ -22,12 +22,17 @@ const tabSlice = createSlice({
             state.tabs = state.tabs.filter(val=>val.path !== action.payload.path)
             if(state.currentTab === action.payload.path){
              state.currentTab = state.tabs[state.tabs.length-1]?.path || '/'
-             console.log(state.currentTab);
              action.payload.navigate(state.currentTab);
             }
         },
         setCurrentTab:(state,action) =>{
               state.currentTab = action.payload;
+        },
+        updateItem:(state,action) =>{
+
+        },
+        deleteItem:(state,action) =>{
+
         }
     }
 })
