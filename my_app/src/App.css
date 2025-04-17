@@ -12,6 +12,6 @@
   }
   
 .addbillbutton{
-    position: absolute;
+    position: fixed;
     bottom: 15px;
 }
