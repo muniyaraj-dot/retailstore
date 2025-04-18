@@ -1,47 +1,60 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { addItem, setCustomer, setDate, addBillItem, setUpdateBillItems, deleteItem, setPaymentType, setSalesStatement } from '../Redux/appSlice';
+import { useNavigate, useParams } from 'react-router-dom';
+import { addItem, setCustomer, setDate, addBillItem, setUpdateBillItems, deleteItem, setPaymentType, setSalesStatement, setUpdateBill } from '../Redux/appSlice';
+import { removeTab } from '../Redux/tabSlice';
 
 const Bill = () => {
   const [update, setUpdate] = useState({});
+  const navigate = useNavigate();
   const { id } = useParams();
+  const inde = id.split("update")[0];
   const billItem = useSelector(store => store.bill);
   const dispatch = useDispatch();
-  const paymentType = billItem?.billDetails?.paymentType[id]?.paymentType || "Credit";
-  const customer = billItem?.billDetails?.cusName[id] || "";
-  const date = billItem?.billDetails?.date[id] || "";
-  const items = billItem.billDetails.billItems[id] || [];
-  const bill = billItem.billItem[id] || {};
-  console.log(customer.customer);
+  const paymentType = billItem?.billDetails?.paymentType[inde]?.paymentType || "Credit";
+  const customer = billItem?.billDetails?.cusName[inde] || "";
+  const date = billItem?.billDetails?.date[inde] || "";
+  const items = billItem.billDetails.billItems[inde] || [];
+  const bill = billItem.billItem[inde] || {};
   const handleUpdate = (index) => {
     setUpdate(prev => ({ ...prev, [index]: !prev[index] }));
   }
   const updateValueHandleing = (e, index) => {
     const { name, value } = e.target;
-    dispatch(setUpdateBillItems({ id, index: index, key: name, value: value }));
+    dispatch(setUpdateBillItems({ id:inde, index: index, key: name, value: value }));
   }
+
+  const updateSale = () =>{
+  console.log("Hello")
+    dispatch(setUpdateBill({id:inde}));
+    dispatch(removeTab({path:window.location.pathname}));
+    navigate("/");
+  }
+
   const billhandleing = (e) => {
     const { name, value } = e.target;
 
     if (name === "customer") {
-      dispatch(setCustomer({ id, [name]: value }));
-    }else if( name === 'date'){
-      dispatch(setDate({ id, [name]: value}));
-    }else if(name === "paymentType"){
-      dispatch(setPaymentType({ id, [name]: value}));
+      dispatch(setCustomer({ id:inde, [name]: value }));
+    } else if (name === 'date') {
+      dispatch(setDate({ id:inde, [name]: value }));
+    } else if (name === "paymentType") {
+      dispatch(setPaymentType({ id:inde, [name]: value }));
     }
     else
-      dispatch(addItem({ item: { id, key: name, value: value } }));
+      dispatch(addItem({ item: { id:inde, key: name, value: value } }));
   }
   const addItemInBill = () => {
-    dispatch(addBillItem(id));
+    dispatch(addBillItem({id:inde}));
   }
   const handleDelete = (index) => {
-    dispatch(deleteItem({ id, index }));
+    dispatch(deleteItem({ id:inde, index }));
   }
   const addSales = () => {
-    dispatch(setSalesStatement({id}));
+    dispatch(setSalesStatement({ id:inde }));
+    dispatch(removeTab({path:window.location.pathname}));
+    navigate("/");
+    
   }
   return (
     <div>
@@ -110,7 +123,7 @@ const Bill = () => {
           </button>
         </div>
       </div>
-      <table class="table table-success table-striped text-center">
+      <table class="table table-success table-striped table-hover text-center">
         <thead >
           <tr>
             <th>NO</th>
@@ -150,10 +163,10 @@ const Bill = () => {
       </table>
       {items.length !== 0 &&
         <div class="d-flex justify-content-evenly">
-          <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 w-50 text-center">
+          <div class="p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 w-50 text-center">
             Total Amount: {items.reduce((acc, item) => acc + (item.itemCount * item.itemPrice), 0)}
           </div>
-          <button class="btn btn-success rounded-pill px-4" onClick={addSales}>FINISH <i class="bi bi-check-circle-fill text-white"></i>
+          <button class="btn btn-success rounded-pill px-4" onClick={id.split("update").length === 1 ? addSales : updateSale}>FINISH <i class="bi bi-check-circle-fill text-white"></i>
           </button>
         </div>
       }

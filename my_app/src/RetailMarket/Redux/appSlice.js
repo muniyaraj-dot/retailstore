@@ -13,12 +13,12 @@ const billSlice = createSlice({
             state.billItem[id] = { ...state.billItem[id], [key]: value };
         },
         addBillItem: (state, action) => {
-            if (!state.billDetails.billItems[action.payload]) {
-                state.billDetails.billItems[action.payload] = [];
+            if (!state.billDetails.billItems[action.payload.id]) {
+                state.billDetails.billItems[action.payload.id] = [];
             }
-            if (state.billItem[action.payload]) {
-                state.billDetails.billItems[action.payload].push(state.billItem[action.payload]);
-                delete state.billItem[action.payload];
+            if (state.billItem[action.payload.id]) {
+                state.billDetails.billItems[action.payload.id].push(state.billItem[action.payload.id]);
+                delete state.billItem[action.payload.id];
             } else {
                 alert("Please fill")
             }
@@ -46,15 +46,35 @@ const billSlice = createSlice({
         },
         setSalesStatement: (state, action) => {
             const { id } = action.payload;
-            state.salesStatements.push({bill:state.billDetails.billItems[id],cusName:state.billDetails.cusName[id]?.customer || "retailer",date:state.billDetails.date[id] || new Date().toISOString().split("T")[0],paymentType:state.billDetails.paymentType[id] || "Credit"});
+            state.salesStatements.push({id:id,bill:state.billDetails.billItems[id],cusName:state.billDetails.cusName[id]?.customer || "retailer",date:state.billDetails.date[id]?.date || new Date().toISOString().split("T")[0],paymentType:state.billDetails.paymentType[id]?.paymentType || "Credit"});
             delete state.billDetails.billItems[id];
             delete state.billDetails?.cusName[id];
             delete state.billDetails?.date[id];
             delete state.billDetails?.paymentType[id];
         },
+        updateSales:(state,action) =>{
+            const {id , bill ,customer , paymentType , date } = action.payload;
+            state.billDetails.billItems[id] = bill;
+            state.billDetails.cusName[id] = {customer};
+            state.billDetails.date[id] = {date};
+            state.billDetails.paymentType[id] = {paymentType};
+        },
+        setUpdateBill:(state,action) =>{
+           const {id} = action.payload;
+           const index =  state.salesStatements.findIndex(val => val.id === id);
+           console.log(state.billDetails.billItems[id]);
+           state.salesStatements[index].bill = state.billDetails.billItems[id];
+           state.salesStatements[index].cusName = state.billDetails.cusName[id]?.customer || "retailer";
+           state.salesStatements[index].date = state.billDetails.date[id]?.date || new Date().toISOString().split("T")[0];
+           state.salesStatements[index].paymentType = state.billDetails.paymentType[id]?.paymentType || "Credit";
+           delete state.billDetails?.billItems[id];
+           delete state.billDetails?.cusName[id];
+           delete state.billDetails?.date[id];
+           delete state.billDetails?.paymentType[id];
+        }
     }
 })
 
-export const { addBillItem, addItem, setCustomer, setDate, setUpdateBillItems, deleteItem, setPaymentType, setSalesStatement } = billSlice.actions;
+export const {updateSales, addBillItem, setUpdateBill,addItem, setCustomer, setDate, setUpdateBillItems, deleteItem, setPaymentType, setSalesStatement } = billSlice.actions;
 
 export default billSlice.reducer;

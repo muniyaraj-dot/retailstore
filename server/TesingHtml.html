@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Styled Table</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    rel="stylesheet"
+  />
+  <style>
+    .table thead {
+      background-color: #343a40;
+      color: white;
+    }
+
+    .action-btns i {
+      font-size: 1rem;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .action-btns i.edit {
+      color: #0d6efd;
+    }
+
+    .action-btns i.delete {
+      color: #dc3545;
+    }
+
+    .action-btns i.view {
+      color: #198754;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h3 class="mb-4">User Table</h3>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Ram Kumar</td>
+            <td>ram@example.com</td>
+            <td><span class="badge bg-success">Active</span></td>
+            <td class="action-btns">
+              <i class="bi bi-eye view" title="View"></i>
+              <i class="bi bi-pencil edit" title="Edit"></i>
+              <i class="bi bi-trash delete" title="Delete"></i>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Sita Devi</td>
+            <td>sita@example.com</td>
+            <td><span class="badge bg-danger">Inactive</span></td>
+            <td class="action-btns">
+              <i class="bi bi-eye view" title="View"></i>
+              <i class="bi bi-pencil edit" title="Edit"></i>
+              <i class="bi bi-trash delete" title="Delete"></i>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Arun B</td>
+            <td>arun@example.com</td>
+            <td><span class="badge bg-warning text-dark">Pending</span></td>
+            <td class="action-btns">
+              <i class="bi bi-eye view" title="View"></i>
+              <i class="bi bi-pencil edit" title="Edit"></i>
+              <i class="bi bi-trash delete" title="Delete"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

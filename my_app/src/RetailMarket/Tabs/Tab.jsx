@@ -17,7 +17,6 @@ const Tab = ({ sidebarOpen }) => {
     const confirmDelete = window.confirm("Are you sure you want to delete?");
     if (confirmDelete) {
       dispatch(removeTab({ path, navigate }));
-      console.log("Deleted!");
     }
   }
   return (
