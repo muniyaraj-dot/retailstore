@@ -5,7 +5,7 @@ const billSlice = createSlice({
     initialState: {},
     reducers: {
         setInitialState: (state, action) => {
-            return {...action.payload.initialState };
+            return { ...action.payload.initialState };
         },
 
         addItem: (state, action) => {

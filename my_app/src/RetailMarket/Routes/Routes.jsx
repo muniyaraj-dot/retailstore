@@ -10,17 +10,17 @@ import Bill from '../Components/Bill'
 const Routes = () => {
   return (
     <div>
-        <BrowserRouter>
-            <Router>
-                <Route path='/' element={<Layout/>}>
-                    <Route path='/' element={<Home/>}/>
-                    <Route path='/dashboard' element={<Dashboard/>}/>
-                    <Route path='/stacks' element={<Stacks/>}/>
-                    <Route path='/settings' element={<Setting/>}/>
-                    <Route path='/bill/:id' element={<Bill/>}/>
-                </Route>
-            </Router>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Router>
+          <Route path='/' element={<Layout />}>
+            <Route path='/' element={<Home />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/stacks' element={<Stacks />} />
+            <Route path='/settings' element={<Setting />} />
+            <Route path='/bill/:id' element={<Bill />} />
+          </Route>
+        </Router>
+      </BrowserRouter>
     </div>
   )
 }

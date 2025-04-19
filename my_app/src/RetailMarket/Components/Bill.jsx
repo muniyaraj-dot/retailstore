@@ -21,13 +21,13 @@ const Bill = () => {
   }
   const updateValueHandleing = (e, index) => {
     const { name, value } = e.target;
-    dispatch(setUpdateBillItems({ id:inde, index: index, key: name, value: value }));
+    dispatch(setUpdateBillItems({ id: inde, index: index, key: name, value: value }));
   }
 
-  const updateSale = () =>{
-  console.log("Hello")
-    dispatch(setUpdateBill({id:inde}));
-    dispatch(removeTab({path:window.location.pathname}));
+  const updateSale = () => {
+    console.log("Hello")
+    dispatch(setUpdateBill({ id: inde }));
+    dispatch(removeTab({ path: window.location.pathname }));
     navigate("/");
   }
 
@@ -35,26 +35,26 @@ const Bill = () => {
     const { name, value } = e.target;
 
     if (name === "customer") {
-      dispatch(setCustomer({ id:inde, [name]: value }));
+      dispatch(setCustomer({ id: inde, [name]: value }));
     } else if (name === 'date') {
-      dispatch(setDate({ id:inde, [name]: value }));
+      dispatch(setDate({ id: inde, [name]: value }));
     } else if (name === "paymentType") {
-      dispatch(setPaymentType({ id:inde, [name]: value }));
+      dispatch(setPaymentType({ id: inde, [name]: value }));
     }
     else
-      dispatch(addItem({ item: { id:inde, key: name, value: value } }));
+      dispatch(addItem({ item: { id: inde, key: name, value: value } }));
   }
   const addItemInBill = () => {
-    dispatch(addBillItem({id:inde}));
+    dispatch(addBillItem({ id: inde }));
   }
   const handleDelete = (index) => {
-    dispatch(deleteItem({ id:inde, index }));
+    dispatch(deleteItem({ id: inde, index }));
   }
   const addSales = () => {
-    dispatch(setSalesStatement({ id:inde }));
-    dispatch(removeTab({path:window.location.pathname}));
+    dispatch(setSalesStatement({ id: inde }));
+    dispatch(removeTab({ path: window.location.pathname }));
     navigate("/");
-    
+
   }
   return (
     <div>

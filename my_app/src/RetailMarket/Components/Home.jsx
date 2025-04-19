@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import Sales from '../Presentation/Sales';
-import { addItem, checkState, setCustomer, setDate, setInitialState, setPaymentType, updateSales } from '../Redux/appSlice';
+import { setCustomer, setDate, setInitialState, setPaymentType, updateSales } from '../Redux/appSlice';
 import axios from 'axios';
 const Home = () => {
   const navigate = useNavigate();
@@ -24,12 +24,6 @@ const Home = () => {
         console.error("Error fetching data:", error);
       }
     };
-    if (isEmpty) {
-      fetchData();
-    }
-  }, [])
-  useEffect(() => {
-    const isEmpty = Object.keys(billItem || {}).length === 0;
     const sendData = async () => {
       try {
         const response = await axios.post("http://localhost:5000/post", { ...billItem });
@@ -38,10 +32,12 @@ const Home = () => {
         console.error("Error sending data:", error.message);
       }
     };
-    if (!isEmpty) {
+    if (isEmpty) {
+      fetchData();
+    } else {
       sendData();
     }
-  }, []);
+  }, [])
 
   const addToBillhandleing = () => {
     navigate(`/bill/${time}`);
