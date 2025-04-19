@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import Sales from '../Presentation/Sales';
-import { addItem, setCustomer, setDate, setPaymentType, updateSales } from '../Redux/appSlice';
-
+import { addItem, checkState, setCustomer, setDate, setInitialState, setPaymentType, updateSales } from '../Redux/appSlice';
+import axios from 'axios';
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -13,7 +13,36 @@ const Home = () => {
   const customer = billItem?.billDetails?.cusName[id]?.customer || "ALL";
   const date = billItem?.billDetails?.date[id]?.date || new Date().toISOString().split("T")[0];
   const time = new Date().getTime();
-  console.log(date)
+  useEffect(() => {
+    const isEmpty = Object.keys(billItem || {}).length === 0;
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/get");
+        const data = response.data;
+        dispatch(setInitialState({ initialState: data }));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    if (isEmpty) {
+      fetchData();
+    }
+  }, [])
+  useEffect(() => {
+    const isEmpty = Object.keys(billItem || {}).length === 0;
+    const sendData = async () => {
+      try {
+        const response = await axios.post("http://localhost:5000/post", { ...billItem });
+        console.log("Server response:", response.data);
+      } catch (error) {
+        console.error("Error sending data:", error.message);
+      }
+    };
+    if (!isEmpty) {
+      sendData();
+    }
+  }, []);
+
   const addToBillhandleing = () => {
     navigate(`/bill/${time}`);
   }
@@ -33,8 +62,7 @@ const Home = () => {
     navigate(`/bill/${billItem.id + "update"}`);
   }
   const sales = useSelector(store => store.bill.salesStatements);
-  const salesItems = sales.filter(val => val.paymentType === paymentType && val.date === date && (customer !== "ALL" ? val.cusName === customer : true));
-  console.log(salesItems);
+  const salesItems = sales?.filter(val => val.paymentType === paymentType && val.date === date && (customer !== "ALL" ? val.cusName === customer : true));
   return (
     <div>
       <div className="row g-2 align-items-center mb-2">

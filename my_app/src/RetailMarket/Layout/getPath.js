@@ -10,7 +10,5 @@ export const getPath = (id) => {
             return "Settings";
         }else if(path === `/bill/${id}`){
             return "Bill"
-        }else if(path === `/sales/${id}`){
-            return "Sales"
         }
 } 

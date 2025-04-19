@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import Tab from '../Tabs/Tab'
 import { Outlet, useParams } from 'react-router-dom'
-import "./layout.css";
 import { useDispatch } from 'react-redux';
 import { addTab } from '../Redux/tabSlice';
 import { getPath } from './getPath';
+import { setInitialState } from '../Redux/appSlice';
+import axios from 'axios';
+
 const Layout = () => {
   const [sidebar, setSidbar] = useState(true);
   const dispatch = useDispatch();

@@ -14,7 +14,7 @@ const Sales = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {sales.map((item, index) => (
+                    {sales?.map((item, index) => (
                         <tr key={index}>
                             <td>{index + 1}</td>
                             <td>{item.cusName.toUpperCase()}</td>
