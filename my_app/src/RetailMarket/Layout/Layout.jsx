@@ -5,8 +5,6 @@ import { Outlet, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { addTab } from '../Redux/tabSlice';
 import { getPath } from './getPath';
-import { setInitialState } from '../Redux/appSlice';
-import axios from 'axios';
 
 const Layout = () => {
   const [sidebar, setSidbar] = useState(true);
@@ -14,7 +12,7 @@ const Layout = () => {
   const { id } = useParams();
   useEffect(() => {
     const pathName = getPath(id);
-    dispatch(addTab({ path: { pathName, path: window.location.pathname } }))
+    dispatch(addTab({ path: { pathName, path: window.location.pathname }}))
   }, [window.location.pathname]);
   return (
     <div className="container-fluid p-0">
