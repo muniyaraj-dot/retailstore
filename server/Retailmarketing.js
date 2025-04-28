@@ -16,7 +16,7 @@ app.get("/get", (req, res) => {
 });
 
 app.post("/post", (req, res) => {
-    initialState = {...initialState,...req.body};
+    initialState = { ...initialState, ...req.body };
     res.send("Data received successfully");
 })
 

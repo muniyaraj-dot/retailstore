@@ -14,6 +14,7 @@ const Layout = () => {
     const pathName = getPath(id);
     dispatch(addTab({ path: { pathName, path: window.location.pathname }}))
   }, [window.location.pathname]);
+
   return (
     <div className="container-fluid p-0">
       <button

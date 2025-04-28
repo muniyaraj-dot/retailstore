@@ -9,6 +9,7 @@ const tabSlice = createSlice({
     name: "tabs",
     initialState: initialState,
     reducers: {
+
         addTab: (state, action) => {
             const path = action.payload.path;
             if (!state.tabs.some(val => val.path === path.path)) {
