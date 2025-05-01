@@ -63,7 +63,7 @@ const Bill = () => {
           <input
             type="text"
             name="customer"
-            className="form-control"
+            className="form-control form-control-lg rounded-2 shadow-sm"
             id="validationServer01"
             value={customer.customer || ""}
             placeholder="Customer Name"
@@ -73,14 +73,14 @@ const Bill = () => {
         <div className="col-md-4">
           <input
             type="date"
-            className="form-control"
+            className="form-control form-control-lg rounded-2 shadow-sm"
             name='date'
             value={date.date ? date.date : new Date().toISOString().split("T")[0]}
             onChange={(e) => billhandleing(e)}
           />
         </div>
         <div className="col-md-4">
-          <select className="form-select " name='paymentType' value={paymentType} onChange={billhandleing}>
+          <select className="form-select form-select-lg rounded-2 shadow-sm" name='paymentType' value={paymentType} onChange={billhandleing}>
             <option value="Depite">Depite</option>
             <option value="Credit">Credit</option>
           </select>
@@ -91,7 +91,7 @@ const Bill = () => {
           <input
             type="text"
             name="itemName"
-            className="form-control"
+            className="form-control form-control-lg rounded-2 shadow-sm"
             value={bill?.itemName || ""}
             placeholder="Item Name"
             onChange={(e) => billhandleing(e)}
@@ -101,7 +101,7 @@ const Bill = () => {
           <input
             type="number"
             name="itemPrice"
-            className="form-control"
+            className="form-control form-control-lg rounded-2 shadow-sm"
             value={bill?.itemPrice || ""}
             placeholder="Item Price"
             onChange={(e) => billhandleing(e)}
@@ -111,7 +111,7 @@ const Bill = () => {
           <input
             type="number"
             name="itemCount"
-            className="form-control"
+            className="form-control form-control-lg rounded-2 shadow-sm"
             value={bill?.itemCount || ""}
             placeholder="Quantity"
             onChange={(e) => billhandleing(e)}
@@ -148,9 +148,9 @@ const Bill = () => {
                   </>) :
                 (<>
                   <td>{index + 1}</td>
-                  <td><input type="text" class="form-control" name="itemName" value={item.itemName} onChange={(e) => updateValueHandleing(e, index)} /></td>
-                  <td><input type="number" class="form-control" name="itemPrice" value={item.itemPrice} onChange={(e) => updateValueHandleing(e, index)} /></td>
-                  <td><input type="number" class="form-control" name="itemCount" value={item.itemCount} onChange={(e) => updateValueHandleing(e, index)} /></td>
+                  <td><input type="text" class="form-control form-control-lg rounded-2 shadow-sm" name="itemName" value={item.itemName} onChange={(e) => updateValueHandleing(e, index)} /></td>
+                  <td><input type="number" class="form-control form-control-lg rounded-2 shadow-sm" name="itemPrice" value={item.itemPrice} onChange={(e) => updateValueHandleing(e, index)} /></td>
+                  <td><input type="number" class="form-control form-control-lg rounded-2 shadow-sm" name="itemCount" value={item.itemCount} onChange={(e) => updateValueHandleing(e, index)} /></td>
                   <td>{item.itemCount * item.itemPrice}</td>
                 </>)}
               <td><button className='btn btn-primary rounded-pill px-4' onClick={() => handleUpdate(index)}>{!update[index] ? <i class="bi bi-pencil-square"></i> : <i class="bi bi-check-circle text-white" ></i>}

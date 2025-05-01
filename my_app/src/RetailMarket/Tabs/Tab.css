@@ -14,11 +14,9 @@
     transition: 0.3s;
     font-size: 17px;
     color: white;
-    border-radius: 5px;
+    border-radius: px;
     padding: 11px 27px;
     font-size: 20px;
   }
-  .activeButton{
-    background-color: rgb(241, 195, 214);
-  }
+
   

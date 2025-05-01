@@ -25,7 +25,7 @@ const Tab = ({ sidebarOpen }) => {
         {tabs.map(tabs => (
           <button
             key={tabs.path}
-            className={`button`}
+            className={`button rounded-pill px-4`}
             style={{ backgroundColor: tabs.path === currentTab ? "#343a40" : 'gray' }}
             onClick={() => tabHandling(tabs.path)}
           >{tabs?.pathName}<span onClick={(e) => deleteTab(e, tabs.path)}>{"  x"}</span></button>

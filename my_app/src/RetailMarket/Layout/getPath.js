@@ -1,4 +1,4 @@
-export const getPath = (id) => {
+export const getPath = (id ,sname) => {
     const path = window.location.pathname;
     if (path === "/") {
         return "Home";
@@ -9,6 +9,8 @@ export const getPath = (id) => {
     } else if (path === "/settings") {
         return "Settings";
     } else if (path === `/bill/${id}`) {
-        return "Bill"
+        return "Bill";
+    }else if(path === `/stack/${sname}`){
+        return "AddStack-"+sname;
     }
 } 

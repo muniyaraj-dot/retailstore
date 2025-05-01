@@ -6,6 +6,7 @@ import Home from '../Components/Home'
 import Stacks from '../Components/Stacks'
 import Setting from '../Components/Setting'
 import Bill from '../Components/Bill'
+import Stack from '../Components/Stack'
 
 const Routes = () => {
   return (
@@ -18,6 +19,7 @@ const Routes = () => {
             <Route path='/stacks' element={<Stacks />} />
             <Route path='/settings' element={<Setting />} />
             <Route path='/bill/:id' element={<Bill />} />
+            <Route path='/stack/:sname' element={<Stack />} />
           </Route>
         </Router>
       </BrowserRouter>

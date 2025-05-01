@@ -16,6 +16,13 @@ const billSlice = createSlice({
             if (!state.billDetails.billItems[action.payload.id]) {
                 state.billDetails.billItems[action.payload.id] = [];
             }
+            // let index = 0;
+            // index = state.billDetails.billItems[action.payload.id].findIndex(val => (val.itemName === state.billItem[action.payload.id].itemName) && (val.itemPrice === state.billItem[action.payload.id].itemPrice));
+            // if (index != -1) {
+            //     state.billDetails.billItems[action.payload.id][index].itemCount =  new Number(state.billDetails.billItems[action.payload.id][index].itemCount) + new Number(state.billItem[action.payload.id].itemCount);
+            //     delete state.billItem[action.payload.id];
+            // }
+            // else 
             if (state.billItem[action.payload.id]) {
                 state.billDetails.billItems[action.payload.id].push(state.billItem[action.payload.id]);
                 delete state.billItem[action.payload.id];

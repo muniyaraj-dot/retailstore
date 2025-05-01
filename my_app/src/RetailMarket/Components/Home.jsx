@@ -13,17 +13,8 @@ const Home = () => {
   const customer = billItem?.billDetails?.cusName[id]?.customer || "ALL";
   const date = billItem?.billDetails?.date[id]?.date || new Date().toISOString().split("T")[0];
   const time = new Date().getTime();
-  useEffect(() => {
-    const isEmpty = Object.keys(billItem || {}).length === 0;
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/get");
-        const data = response.data;
-        dispatch(setInitialState({ initialState: data }));
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+
+  useEffect(()=>{
     const sendData = async () => {
       try {
         const response = await axios.post("http://localhost:5000/post", { ...billItem });
@@ -32,13 +23,11 @@ const Home = () => {
         console.error("Error sending data:", error.message);
       }
     };
-    if (isEmpty) {
-      fetchData();
-    } else {
-      sendData();
-    }
-  }, [])
 
+    sendData();
+
+  },[]);
+  
   const addToBillhandleing = () => {
     navigate(`/bill/${time}`);
   }
@@ -63,13 +52,13 @@ const Home = () => {
     <div>
       <div className="row g-2 align-items-center mb-2">
         <div className="col-md-4">
-          <input type="date" name='date' className="form-control" value={date} onChange={billhandleing} />
+          <input type="date" name='date' className="form-control form-control-lg rounded-2 shadow-sm" value={date} onChange={billhandleing} />
         </div>
         <div className="col-md-4">
-          <input type="text" name='customer' className='form-control' defaultValue={customer} placeholder='CustomerName...' onChange={billhandleing} />
+          <input type="text" name='customer' className='form-control form-control-lg rounded-2 shadow-sm' defaultValue={customer} placeholder='CustomerName...' onChange={billhandleing} />
         </div>
         <div className="col-md-4">
-          <select className="form-select" name='paymentType' value={paymentType} onChange={billhandleing}>
+          <select className="form-select form-select-lg rounded-2 shadow-sm" name='paymentType' value={paymentType} onChange={billhandleing}>
             <option value="Depite">Depite</option>
             <option value="Credit">Credit</option>
           </select>
