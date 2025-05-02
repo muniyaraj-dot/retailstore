@@ -14,7 +14,7 @@ const Home = () => {
   const date = billItem?.billDetails?.date[id]?.date || new Date().toISOString().split("T")[0];
   const time = new Date().getTime();
 
-  useEffect(()=>{
+  useEffect(() => {
     const sendData = async () => {
       try {
         const response = await axios.post("http://localhost:5000/post", { ...billItem });
@@ -26,8 +26,8 @@ const Home = () => {
 
     sendData();
 
-  },[]);
-  
+  }, []);
+
   const addToBillhandleing = () => {
     navigate(`/bill/${time}`);
   }
@@ -44,7 +44,7 @@ const Home = () => {
   }
   const updateSale = (billItem) => {
     dispatch(updateSales({ id: billItem.id, bill: billItem.bill, customer: billItem.cusName, paymentType: billItem.paymentType, date: billItem.date }))
-    navigate(`/bill/${billItem.id + "update"}`);
+    navigate(`/bill/${billItem.id + "&"+billItem.cusName}`);
   }
   const sales = useSelector(store => store.bill.salesStatements);
   const salesItems = sales?.filter(val => val.paymentType === paymentType && val.date === date && (customer !== "ALL" ? val.cusName === customer : true));

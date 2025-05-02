@@ -1,6 +1,9 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 
 const Stack = () => {
+  const location = useLocation();
+  console.log(location.state);
   return (
     <div>
         <div className='row  g-2 align-items-center mb-2'>

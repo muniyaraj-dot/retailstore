@@ -8,7 +8,7 @@ const Bill = () => {
   const [update, setUpdate] = useState({});
   const navigate = useNavigate();
   const { id } = useParams();
-  const inde = id.split("update")[0];
+  const inde = id.split("&")[0];
   const billItem = useSelector(store => store.bill);
   const dispatch = useDispatch();
   const paymentType = billItem?.billDetails?.paymentType[inde]?.paymentType || "Credit";
@@ -25,7 +25,6 @@ const Bill = () => {
   }
 
   const updateSale = () => {
-    console.log("Hello")
     dispatch(setUpdateBill({ id: inde }));
     dispatch(removeTab({ path: window.location.pathname }));
     navigate("/");
@@ -166,7 +165,7 @@ const Bill = () => {
           <div class="p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 w-50 text-center">
             Total Amount: {items.reduce((acc, item) => acc + (item.itemCount * item.itemPrice), 0)}
           </div>
-          <button class="btn btn-success rounded-pill px-4" onClick={id.split("update").length === 1 ? addSales : updateSale}>FINISH <i class="bi bi-check-circle-fill text-white"></i>
+          <button class="btn btn-success rounded-pill px-4" onClick={id.split("&").length === 1 ? addSales : updateSale}>FINISH <i class="bi bi-check-circle-fill text-white"></i>
           </button>
         </div>
       }
