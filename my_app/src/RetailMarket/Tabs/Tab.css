@@ -1,22 +1,31 @@
 .button-container {
-    display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        white-space: nowrap;
-        gap: 10px;
-        padding: 6px 0px 5px 2px;
-  }
-  
-  .button {
-    border: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-    color: white;
-    border-radius: px;
-    padding: 11px 27px;
-    font-size: 20px;
-  }
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 10px;
+  padding: 6px 0px 5px 2px;
+}
 
-  
+.button {
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+  width: 120px;
+  color: white;
+  padding: 11px;
+  font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.button-close{
+  position: absolute;
+  right: 18px;
+}
+
+.button-text{
+  padding-right: 10px;
+}

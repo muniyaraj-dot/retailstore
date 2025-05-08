@@ -23,12 +23,15 @@ const Tab = ({ sidebarOpen }) => {
     <div>
       <div className='button-container' style={{ marginLeft: sidebarOpen ? "0px" : "60px" }}>
         {tabs.map(tabs => (
-          <button
-            key={tabs.path}
-            className={`button rounded-pill px-4`}
-            style={{ backgroundColor: tabs.path === currentTab ? "#343a40" : 'gray' }}
-            onClick={() => tabHandling(tabs.path)}
-          >{tabs?.pathName}<span onClick={(e) => deleteTab(e, tabs.path)}>{"  x"}</span></button>
+          <div style={{position:'relative'}}>
+            <button
+              key={tabs.path}
+              className={`button rounded-pill px-4`}
+              style={{ backgroundColor: tabs.path === currentTab ? "#343a40" : 'gray' }}
+              onClick={() => tabHandling(tabs.path)}
+              title={tabs?.pathName}
+            ><span className='button-text'>{tabs?.pathName}</span><span className='button-close' onClick={(e) => deleteTab(e, tabs.path)}>{"  x"}</span></button>
+          </div>
         ))}
       </div>
     </div>

@@ -3,11 +3,13 @@ import React from 'react'
 const BillDetail = () => {
   return (
     <div>
-        <div>
-            STORE NAME
+        <div className=''>
+            <div>
+                  
+            </div>
         </div>
     </div>
   )
 }
 
-export default BillDetail
+export default BillDetail;

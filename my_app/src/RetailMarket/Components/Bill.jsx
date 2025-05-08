@@ -12,9 +12,9 @@ const Bill = () => {
   const billItem = useSelector(store => store.bill);
   const dispatch = useDispatch();
   const paymentType = billItem?.billDetails?.paymentType[inde]?.paymentType || "Credit";
-  const customer = billItem?.billDetails?.cusName[inde] || "";
-  const date = billItem?.billDetails?.date[inde] || "";
-  const items = billItem.billDetails.billItems[inde] || [];
+  const customer = billItem?.billDetails.cusName[inde] || "";
+  const date = billItem?.billDetails.date[inde] || "";
+  const items = billItem?.billDetails.billItems[inde] || [];
   const bill = billItem.billItem[inde] || {};
   const handleUpdate = (index) => {
     setUpdate(prev => ({ ...prev, [index]: !prev[index] }));
@@ -91,7 +91,7 @@ const Bill = () => {
             type="text"
             name="itemName"
             className="form-control form-control-lg rounded-2 shadow-sm"
-            value={bill?.itemName || ""}
+            value={bill.itemName || ""}
             placeholder="Item Name"
             onChange={(e) => billhandleing(e)}
           />
@@ -101,7 +101,7 @@ const Bill = () => {
             type="number"
             name="itemPrice"
             className="form-control form-control-lg rounded-2 shadow-sm"
-            value={bill?.itemPrice || ""}
+            value={bill.itemPrice || ""}
             placeholder="Item Price"
             onChange={(e) => billhandleing(e)}
           />
@@ -111,7 +111,7 @@ const Bill = () => {
             type="number"
             name="itemCount"
             className="form-control form-control-lg rounded-2 shadow-sm"
-            value={bill?.itemCount || ""}
+            value={bill.itemCount || ""}
             placeholder="Quantity"
             onChange={(e) => billhandleing(e)}
           />
@@ -135,7 +135,7 @@ const Bill = () => {
           </tr>
         </thead>
         <tbody>
-          {items.map((item, index) => (
+          {items?.map((item, index) => (
             <tr key={index}>
               {!update[index] ?
                 (

@@ -15,7 +15,7 @@ const Stacks = () => {
   return (
     <div>
       <div className='row' style={{ filter: section ? 'blur(5px)' : "" }}>
-        <div className='col'><input type="text" name="" className='form-control form-control-lg rounded-2 shadow-sm' placeholder="Enter section wish..." /></div>
+        <div className='col'><input type="text" name="" className='form-control form-control-lg rounded-2 shadow-sm' placeholder="Section..." /></div>
         <div className='col'><input type="text" name='' className='form-control form-control-lg rounded-2 shadow-sm' placeholder="Search by name or ID" /></div>
         <div className='col'><input type="date" name="" className='form-control form-control-lg rounded-2 shadow-sm' value={new Date().toISOString().split("T")[0]} /></div>
       </div>

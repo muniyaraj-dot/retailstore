@@ -12,11 +12,11 @@ import { setStackForBackend } from '../Redux/stackSlice';
 const Layout = () => {
   const [sidebar, setSidbar] = useState(true);
   const dispatch = useDispatch();
-  const { id , sname} = useParams();
+  const { id, sname } = useParams();
 
   useEffect(() => {
-    const pathName = getPath(id,sname);
-    dispatch(addTab({ path: { pathName, path: window.location.pathname }}))
+    const pathName = getPath(id, sname);
+    dispatch(addTab({ path: { pathName, path: window.location.pathname } }))
   }, [window.location.pathname]);
 
   useEffect(() => {
@@ -31,12 +31,12 @@ const Layout = () => {
     };
     const getStack = async () => {
       const data = await axios.get("http://localhost:5000/stackGet");
-      dispatch(setStackForBackend({stack:{...data.data}}));
+      dispatch(setStackForBackend({ stack: { ...data.data } }));
     }
     getStack();
 
     fetchData();
-    
+
   }, [])
 
   return (
